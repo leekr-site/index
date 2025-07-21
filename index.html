@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Leekr</title>
+    <style>
+        :root {
+            /* Colors based on Leekr variables */
+            --color-bg: rgb(38, 38, 36);
+            --color-bg-dark: hsl(60, 2.7%, 7.6%);
+            --color-bg-dark-transparent: hsl(60 2.7% 7.6% / 85%);
+            --color-text: hsl(48 4.8% 59.2%);
+            --color-text-light: #bfbfbf;
+            --color-leek: #6c7c36;
+            --color-link-text: hsl(210 70.9% 51.6%);
+            --color-border: #2c2c33;
+            --border-radius: 8px;
+            --shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+            flex: 1;
+        }
+
+        .tab-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            color: var(--color-text);
+        }
+
+        .about-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .about-logo {
+            width: 300px;
+            height: 400px;
+        }
+
+        .version-badge {
+            background-color: var(--color-leek);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .about-content {
+            background-color: var(--color-bg-dark-transparent);
+            padding: 24px;
+            border-radius: var(--border-radius);
+            margin-bottom: 32px;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow);
+            font-size: 13px;
+        }
+
+        .about-content-header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .about-content-header-img {
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-content-header-text {
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-content h3 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            color: var(--color-text);
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .about-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .about-content hr {
+            margin-top: 16px;
+            margin-bottom: 16px;
+            border: none;
+            height: 1px;
+            background-color: var(--color-border);
+        }
+
+        .about-content p {
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            background-color: var(--color-bg-dark);
+            border-radius: var(--border-radius);
+            border: 1px solid #3a3a45;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            background-color: var(--color-bg-dark-transparent);
+        }
+
+        .feature-text strong {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--color-text);
+        }
+
+        .feature-text p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--color-text-light);
+        }
+
+        .about-footer {
+            text-align: center;
+            color: var(--color-text-light);
+            font-size: 14px;
+            padding-top: 24px;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .about-links {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .about-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background-color: var(--color-bg-dark-transparent);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: var(--color-link-text);
+            transition: all 0.2s;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow);
+            font-weight: 500;
+        }
+
+        .about-link:hover {
+            background-color: var(--color-bg-dark);
+            color: var(--color-leek);
+        }
+
+        em {
+            font-style: italic;
+            color: var(--color-leek);
+            font-weight: 500;
+        }
+
+        /* Privacy page specific styles */
+        .privacy-content {
+            background-color: var(--color-bg-dark-transparent);
+            padding: 24px;
+            border-radius: var(--border-radius);
+            margin-bottom: 32px;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .privacy-content h1 {
+            color: var(--color-leek);
+            margin-bottom: 24px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .privacy-content h2 {
+            color: var(--color-text);
+            margin-top: 32px;
+            margin-bottom: 16px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .privacy-content h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .privacy-content p {
+            margin-bottom: 16px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-link-text);
+            text-decoration: none;
+            margin-bottom: 24px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--color-leek);
+        }
+
+        @media (max-width: 768px) {
+            .about-links {
+                flex-direction: column;
+            }
+            
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+
+            .about-logo {
+                width: 200px;
+                height: 267px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="main-content"></div>
+    </div>
+
+    <script>
+        // Router functionality
+        function router() {
+            const path = window.location.pathname;
+            const mainContent = document.getElementById('main-content');
+            
+            if (path === '/privacy') {
+                document.getElementById('page-title').textContent = 'Privacy Policy - Leekr';
+                mainContent.innerHTML = getPrivacyPageHTML();
+            } else {
+                document.getElementById('page-title').textContent = 'Leekr';
+                mainContent.innerHTML = getHomePageHTML();
+            }
+        }
+
+        function getHomePageHTML() {
+            return `
+                <div class="tab-content">
+                    <section class="about-section">
+                        <div class="about-content">
+                            <div class="about-header">
+                                <div></div>
+                                <div class="version-badge">v1.0.0</div>
+                            </div>
+                            <div class="about-content-header-container">
+                                <div class='about-content-header-img'>
+                                    <img
+                                        src="https://raw.githubusercontent.com/Jeff-Rowell/leekr/main/src/icons/leekr.png"
+                                        alt="Leekr Logo"
+                                        class="about-logo"
+                                    />
+                                </div>
+                                <div class='about-content-header-text'>
+                                    <p>Leekr <em>passively identifies</em> secrets exposed in <em>client-side JavaScript</em> while you browse the web.</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <h3>About</h3>
+                            <p>
+                                Leekr is an <em>open-source</em>, <em>MIT-licensed</em> browser extension that detects exposed secrets in <em>client-side JavaScript</em>
+                                — like API keys, tokens, and cloud service credentials. It's designed to help identify secret leaks in applications even
+                                without access to source code, supports custom secret patterns, and performs configurable validity checks for the secrets it finds.
+                            </p>
+
+                            <h3>Key Features</h3>
+                            <div class="feature-list">
+                                <div class="feature-item">
+                                    <div class="feature-icon">🔍</div>
+                                    <div class="feature-text">
+                                        <strong>Passive Detection</strong>
+                                        <p>Automatically scans JavaScript files while you browse</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">🔑</div>
+                                    <div class="feature-text">
+                                        <strong>Multiple Secret Types</strong>
+                                        <p>Identifies API keys, tokens, and cloud credentials</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">⚙️</div>
+                                    <div class="feature-text">
+                                        <strong>Customizable</strong>
+                                        <p>Customize file suffixes and Leekr will listen for those files</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">
+                                        <strong>Validity Checks</strong>
+                                        <p>Verifies and only notifies if discovered secrets are valid</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">🔄</div>
+                                    <div class="feature-text">
+                                        <strong>Configuration Sharing</strong>
+                                        <p>Share your configuration with others or across devices.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">📃</div>
+                                    <div class="feature-text">
+                                        <strong>Source Code Attribution</strong>
+                                        <p>Identifies the exact lines of code that introduced the exposure.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>Open Source</h3>
+                            <p>
+                                Leekr is completely open source under the MIT license. Contributions to the project are welcome!
+                                Visit the GitHub repository below to learn more about the project, report issues, or contribute to its development.
+                            </p>
+                        </div>
+
+                        <div class="about-footer">
+                            <div class="about-links">
+                                <a href="https://github.com/Jeff-Rowell/leekr" class="about-link" target="_blank" rel="noopener noreferrer">
+                                    <span>🐙</span>
+                                    <span>GitHub Repository</span>
+                                    <span>↗</span>
+                                </a>
+                                <a href="/privacy" class="about-link">
+                                    <span>🛡️</span>
+                                    <span>Privacy Policy</span>
+                                    <span>→</span>
+                                </a>
+                            </div>
+                            <p class="copyright">© ${new Date().getFullYear()} Leekr</p>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        function getPrivacyPageHTML() {
+            return `
+                <div class="tab-content">
+                    <a href="/" class="back-link">
+                        <span>←</span>
+                        <span>Back to Home</span>
+                    </a>
+                    
+                    <div class="privacy-content">
+                        <h1>Privacy Policy</h1>
+                        
+                        <h2>Personal Data</h2>
+                        <p>Leekr has never collected and will never collect any personal data, browsing history, etc.</p>
+
+                        <h2>Technical Data</h2>
+                        <p>Leekr collects secret exposures found in client-side JavaScript that is loaded when you browse to various web pages. These secret exposures are kept within the user's browser local storage.</p>
+                        <p>Leekr makes non-intrusive API calls to various endpoints in order to validate the secrets identified in client-side JavaScript. This is done to verify the secret as a true positive, otherwise the secret is considered a false positive.</p>
+
+                        <h2>Settings</h2>
+                        <p>Leekr uses the Chrome Storage Sync/Local API to store user's settings and the browser's Web Storage API (localStorage) to store a user's secret findings.</p>
+                        
+                        <p><strong>Updated: </strong>July 21, 2025</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Handle navigation
+        window.addEventListener('popstate', router);
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('a[href^="/"]');
+            if (target) {
+                e.preventDefault();
+                const href = target.getAttribute('href');
+                window.history.pushState(null, null, href);
+                router();
+            }
+        });
+
+        // Initialize router on page load
+        router();
+    </script>
+</body>
+</html>
